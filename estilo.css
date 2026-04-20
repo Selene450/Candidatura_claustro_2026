@@ -96,35 +96,44 @@ header h1 {
     background: #ebebf2;
 }
 
-.card summary {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    outline: none;
-    cursor: pointer;
-}
-
-.card summary::-webkit-details-marker {
-    display: none;
-}
-
 .card h4 {
     color: var(--morado-principal);
     font-size: 1.3rem;
     margin: 0;
 }
 
+/* Modificacións para a icona de expansión */
 .card .icon {
-    font-size: 0.8rem;
+    font-size: 1.8rem; /* Máis grande para que se vexa ben */
+    font-weight: 300;
     color: var(--morado-principal);
-    transition: transform 0.3s ease;
-    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 1;
+    display: inline-block;
+    width: 24px;
+    text-align: center;
 }
 
-/* Efectos de apertura */
+/* Cando a tarxeta está aberta, o + xira 45 graos e convértese nun x (ou podes facer que xire 180) */
 .card[open] .icon {
-    transform: rotate(180deg);
+    transform: rotate(45deg); 
+    color: var(--morado-oscuro);
+}
+
+/* Estilo adicional para o summary para que o cursor pointer sexa total */
+.card summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    padding: 5px 0;
+    cursor: pointer; /* Man en toda a cabeceira */
+}
+
+/* Aseguramos que no móbil non saia o recadro azul ao premer */
+.card summary {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .card-content {
