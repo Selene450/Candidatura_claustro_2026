@@ -80,6 +80,7 @@ header h1 {
     grid-template-columns: 1fr; /* Unha columna por defecto en móbil */
     gap: 15px;
     margin-bottom: 4rem;
+    align-items: start;
 }
 
 
@@ -197,6 +198,7 @@ footer {
 @media (min-width: 768px) {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        align-items: start;
     }
     .hero h2 { font-size: 3.5rem; }
 }
