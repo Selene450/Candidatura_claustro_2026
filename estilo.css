@@ -1,6 +1,6 @@
 /* Variables de color */
 :root {
-    --morado-principal: #6200EE;
+    --morado-principal: #BC3FDE;
     --morado-oscuro: #4B0082;
     --blanco: #ffffff;
     --gris-claro: #f4f4f9;
@@ -15,8 +15,9 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #2d2d2d;
     background-color: var(--blanco);
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
@@ -48,25 +49,25 @@ header h1 {
 .hero {
     background: linear-gradient(135deg, var(--morado-principal), var(--morado-oscuro));
     color: var(--blanco);
-    padding: 100px 0;
+    padding: 80px 0;
     text-align: center;
 }
 
 .hero h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 900;
     margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Cards / Propostas */
+/* Grid e Acordeóns (Cards) */
 .section-title {
     text-align: center;
     margin: 3rem 0;
@@ -76,33 +77,83 @@ header h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr; /* Unha columna por defecto en móbil */
+    gap: 15px;
     margin-bottom: 4rem;
 }
 
+/* Estilo Card como Acordeón */
 .card {
     background: var(--gris-claro);
-    padding: 30px;
+    padding: 20px 30px;
     border-radius: 15px;
     border-left: 5px solid var(--morado-principal);
-    transition: transform 0.3s ease;
+    transition: background 0.3s ease;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    background: #ebebf2;
+}
+
+.card summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+}
+
+.card summary::-webkit-details-marker {
+    display: none;
 }
 
 .card h4 {
     color: var(--morado-principal);
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    margin: 0;
 }
 
-/* Botones */
+.card .icon {
+    font-size: 0.8rem;
+    color: var(--morado-principal);
+    transition: transform 0.3s ease;
+}
+
+/* Efectos de apertura */
+.card[open] .icon {
+    transform: rotate(180deg);
+}
+
+.card-content {
+    padding-top: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+.card-content p {
+    margin-bottom: 15px;
+}
+
+.card ul {
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+.card li {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botóns */
 .btn, .btn-alt {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
@@ -124,7 +175,7 @@ header h1 {
     color: var(--blanco);
 }
 
-/* Contacto y Footer */
+/* Contacto e Footer */
 .contacto {
     background: var(--gris-claro);
     padding: 60px 0;
@@ -136,6 +187,14 @@ footer {
     padding: 2rem;
     font-size: 0.9rem;
     color: #666;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .hero h2 { font-size: 3.5rem; }
 }
 
 /* Mobile */
