@@ -115,13 +115,15 @@ header h1 {
 .card .icon {
     pointer-events: none; /* O rato "atravesa" o texto e a icona, detectando o clic no summary */
     cursor: pointer !important;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s ease-out;
+    display: inline-block;
 }
 
 /* 4. O contido cando se abre */
 .card-content {
     padding: 0 30px 30px 30px;
     cursor: default; /* Dentro permitimos cursor normal para ler/copiar */
+    overflow: hidden;
     /* Efecto de suavizado */
     opacity: 0;
     transform: translateY(-10px);
@@ -140,6 +142,10 @@ header h1 {
     max-height: 500px; /* Un valor suficientemente alto para o teu texto */
     padding-top: 10px;  /* Damos un pouco de aire ao abrir */
     transition: opacity 0.6s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), max-height 0.8s ease;
+}
+
+.card[open] .icon {
+    transform: rotate(45deg);
 }
 
 /* Esconder o marcador nativo */
