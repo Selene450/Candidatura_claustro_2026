@@ -82,68 +82,55 @@ header h1 {
     margin-bottom: 4rem;
 }
 
-/* Estilo Card como Acordeón */
-.card {
-    background: var(--gris-claro);
-    padding: 20px 30px;
-    border-radius: 15px;
-    border-left: 5px solid var(--morado-principal);
-    transition: background 0.3s ease;
-    cursor: pointer;
-}
 
 .card:hover {
     background: #ebebf2;
 }
 
-.card h4 {
-    color: var(--morado-principal);
-    font-size: 1.3rem;
-    margin: 0;
-    cursor: pointer; 
-    pointer-events: none; 
-
+/* 1. Toda a tarxeta é un botón */
+.card {
+    background: var(--gris-claro);
+    padding: 0; /* Quitamos o padding de aquí */
+    border-radius: 15px;
+    border-left: 5px solid var(--morado-principal);
+    cursor: pointer !important;
+    display: block;
+    overflow: hidden;
 }
 
-/* Modificacións para a icona de expansión */
-.card .icon {
-    font-size: 1.8rem; /* Máis grande para que se vexa ben */
-    font-weight: 300;
-    color: var(--morado-principal);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    line-height: 1;
-    display: inline-block;
-    width: 24px;
-    text-align: center;
-}
-
-/* Cando a tarxeta está aberta, o + xira 45 graos e convértese nun x (ou podes facer que xire 180) */
-.card[open] .icon {
-    transform: rotate(45deg); 
-    color: var(--morado-oscuro);
-}
-
-/* Estilo adicional para o summary para que o cursor pointer sexa total */
+/* 2. O summary controla a área de clic superior */
 .card summary {
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 30px; /* O padding dáse aquí para que todo sexa clicable */
     outline: none;
-    cursor: pointer; 
-    padding: 10px 0; 
-    user-select: none; 
+    user-select: none; /* Evita que o cursor mude a modo "texto" */
+    cursor: pointer !important;
 }
 
-/* Aseguramos que no móbil non saia o recadro azul ao premer */
-.card summary {
-    -webkit-tap-highlight-color: transparent;
+/* 3. BLOQUEO CLAVE: O h4 e a icona non deben interferir co cursor */
+.card h4, 
+.card .icon {
+    pointer-events: none; /* O rato "atravesa" o texto e a icona, detectando o clic no summary */
+    cursor: pointer !important;
 }
 
+/* 4. O contido cando se abre */
 .card-content {
-    padding-top: 20px;
-    animation: fadeIn 0.4s ease;
+    padding: 0 30px 30px 30px;
+    cursor: default; /* Dentro permitimos cursor normal para ler/copiar */
+}
+
+/* 5. Aseguramos que ata o espazo baleiro da tarxeta aberta sexa pointer se non é contido */
+.card[open] {
     cursor: default;
+}
+
+/* Esconder o marcador nativo */
+.card summary::-webkit-details-marker {
+    display: none;
 }
 
 .card-content p {
