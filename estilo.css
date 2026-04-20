@@ -1,3 +1,4 @@
+/* Variables de color */
 :root {
     --morado-principal: #BC3FDE;
     --morado-oscuro: #4B0082;
@@ -14,9 +15,8 @@
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #2d2d2d;
+    color: #333;
     background-color: var(--blanco);
-    -webkit-font-smoothing: antialiased;
 }
 
 .container {
@@ -35,24 +35,38 @@ header {
 
 header h1 {
     font-weight: 900;
+    letter-spacing: -1px;
     text-transform: uppercase;
+}
+
+.tagline {
+    font-weight: 300;
+    opacity: 0.9;
 }
 
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, var(--morado-principal), var(--morado-oscuro));
     color: var(--blanco);
-    padding: 80px 0;
+    padding: 100px 0;
     text-align: center;
 }
 
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 900;
     margin-bottom: 1rem;
 }
 
-/* Propostas Grid */
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cards / Propostas */
 .section-title {
     text-align: center;
     margin: 3rem 0;
@@ -62,10 +76,9 @@ header h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-bottom: 4rem;
-    align-items: stretch; /* Fai que todas midan o mesmo para que se vexa ordenado */
 }
 
 .card {
@@ -73,45 +86,45 @@ header h1 {
     padding: 30px;
     border-radius: 15px;
     border-left: 5px solid var(--morado-principal);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
 }
 
 .card h4 {
     color: var(--morado-principal);
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     font-size: 1.4rem;
 }
 
-.card p {
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-}
-
-.card ul {
-    padding-left: 20px;
-    list-style-type: square;
-}
-
-.card li {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    color: #444;
-}
-
-/* Botóns */
+/* Botones */
 .btn, .btn-alt {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
 }
 
-.btn { background: var(--blanco); color: var(--morado-principal); }
-.btn-alt { background: var(--morado-principal); color: var(--blanco); }
+.btn {
+    background: var(--blanco);
+    color: var(--morado-principal);
+}
 
-/* Contacto e Footer */
+.btn:hover {
+    background: var(--gris-claro);
+    transform: scale(1.05);
+}
+
+.btn-alt {
+    background: var(--morado-principal);
+    color: var(--blanco);
+}
+
+/* Contacto y Footer */
 .contacto {
     background: var(--gris-claro);
     padding: 60px 0;
@@ -125,7 +138,7 @@ footer {
     color: #666;
 }
 
-/*Para pantalla de móbil*/
+/* Mobile */
 @media (max-width: 768px) {
     .hero h2 { font-size: 2rem; }
 }
